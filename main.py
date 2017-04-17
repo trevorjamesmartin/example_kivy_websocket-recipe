@@ -27,10 +27,10 @@ kv = '''
 Builder.load_string(kv)
 
 
-class ConnectedSocket(websocket.WebSocketApp):
+class KivyWebSocket(websocket.WebSocketApp):
 
     def __init__(self, *args, **kwargs):
-        super(ConnectedSocket, self).__init__(*args, **kwargs)
+        super(KivyWebSocket, self).__init__(*args, **kwargs)
         self.logger = Logger
         self.logger.info('WebSocket: logger initialized')
 
@@ -60,11 +60,11 @@ class WebSocketTest(App):
     def __init__(self, **kwargs):
         super(WebSocketTest, self).__init__(**kwargs)
         socket_server="ws://echo.websocket.org/"
-        ws = ConnectedSocket(socket_server,
-                             on_message=self.on_ws_message,
-                             on_error=self.on_ws_error,
-                             on_open=self.on_ws_open,
-                             on_close=self.on_ws_close,)
+        ws = KivyWebSocket(socket_server,
+                           on_message=self.on_ws_message,
+                           on_error=self.on_ws_error,
+                           on_open=self.on_ws_open,
+                           on_close=self.on_ws_close,)
         self.ws = ws
         self.logger = Logger
         self.logger.info('App: initiallzed')
@@ -78,7 +78,6 @@ class WebSocketTest(App):
         self.logger.info('WebSocket: {}'.format(message))
 
     def on_ws_error(self, ws, error):
-        # self.layout.the_btn.text = error
         self.logger.info('WebSocket: [ERROR]  {}'.format(error))
 
     def ws_connection(self, dt, **kwargs):

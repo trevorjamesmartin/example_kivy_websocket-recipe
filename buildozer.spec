@@ -100,7 +100,7 @@ android.permissions = INTERNET
 
 # (str) python-for-android git clone directory (if empty, it will be automatically cloned from github)
 #android.p4a_dir =
-android.p4a_dir = /home/trevor/PycharmProjects/python-for-android
+android.p4a_dir = ../python-for-android
 
 # (str) The directory in which python-for-android should look for your own build recipes (if any)
 #p4a.local_recipes =
